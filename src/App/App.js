@@ -22,11 +22,11 @@ class App extends Component {
   fetchOneCookie = async  () => {
     const cookie = await getOneCookie();
     this.setState({ cookies: [...cookie, ...this.state.cookies]})
-    // this.setState({isClicked: true})
+    this.setState({isClicked: false})
   }
-  // handleClick = (props) => {
-    
-  // }
+  handleFortuneClick = () => {
+    this.setState({isClicked: !this.state.isClicked})
+  }
   render() {
     return (
       <div className="App">
@@ -36,7 +36,11 @@ class App extends Component {
           
             <section className="Cookie-container">
 
-              <Cookie cookies={this.state.cookies} />
+              <Cookie 
+                cookies={this.state.cookies}
+                handleFortuneClick={this.handleFortuneClick}
+                isClicked={this.state.isClicked}
+              />
             </section>
             <button 
               className="button"
