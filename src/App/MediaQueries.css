@@ -1,6 +1,6 @@
 @media(hover: hover) and (pointer: fine) {
-  button:hover {
+  /* button:hover {
     color: white;
     box-shadow: inset 4px 7px 13px 0px #000000c2, inset 4px 7px 13px 0px #000000c2, 4px 7px 13px 0px #000000c2;
-  }
+  } */
 }

@@ -3,27 +3,49 @@ import './App.css';
 import './MediaQueries.css';
 import { render } from '@testing-library/react';
 import {getOneCookie} from '../ApiCalls';
-
+import { Cookie } from '../Cookie/Cookie';
+import { NavBar } from '../NavBar/NavBar'
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      cookies: []
+      cookies: [],
+      isClicked: false,
+      isOpen: false,
     }
   }
   
+  // componentDidMount = () => {
+  //   this.fetchOneCookie()
+  // }
+
   fetchOneCookie = async  () => {
     const cookie = await getOneCookie();
-    await this.setState({ cookies: [...cookie, ...this.state.cookies]})
+    this.setState({ cookies: [...cookie, ...this.state.cookies]})
+    this.setState({isClicked: false})
   }
+  handleFortuneClick = () => {
+    this.setState({isClicked: !this.state.isClicked})
+  }
+  handleNavOpen = () => {
 
+  }
   render() {
     return (
       <div className="App">
         <section className="App-header">
-          {/* <NavBar /> */}
+         <NavBar 
+           isOpen={this.state.isOpen}
+         />
           <section className="Main-page">
+            <section className="Cookie-container">
+              <Cookie 
+                cookies={this.state.cookies}
+                handleFortuneClick={this.handleFortuneClick}
+                isClicked={this.state.isClicked}
+              />
+            </section>
             <button 
               className="button"
               onClick={this.fetchOneCookie}
@@ -35,6 +57,5 @@ class App extends Component {
     );
   }
 }
-
 
 export default App;
