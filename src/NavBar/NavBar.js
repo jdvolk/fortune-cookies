@@ -3,8 +3,10 @@ import "./NavBar.css"
 
 export const NavBar = () => {
   return (
-    <section>
-      
+    <section className="Nav-bar">
+      <button
+        className="button Nav-button"
+      ></button>
     </section>
   )
 }
