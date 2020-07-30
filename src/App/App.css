@@ -15,7 +15,7 @@
   border: solid 3px transparent;
   /* box-shadow: 2px 1000px 1px #333333 inset; */
   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #78e4ff, #ff48fa);
-  box-shadow: 4px 7px 13px 0px #000000c2, inset 3px 3px 6px 0px #4c4c4c, inset -4px -4px 4px 0px #292929, 2px 1000px 1px #333333 inset;
+  box-shadow: 4px 7px 13px 0px #000000c2, inset 3px 3px 6px 0px #4c4c4c, inset -4px -4px 4px 0px #292929, 2px 1000px 1px #282d34 inset;
   background-origin: border-box;
   background-clip: content-box, border-box;
 

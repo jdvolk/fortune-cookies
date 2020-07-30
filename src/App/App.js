@@ -12,10 +12,12 @@ class App extends Component {
       cookies: []
     }
   }
+  
   fetchOneCookie = async  () => {
     const cookie = await getOneCookie();
     await this.setState({ cookies: [...cookie, ...this.state.cookies]})
   }
+
   render() {
     return (
       <div className="App">
