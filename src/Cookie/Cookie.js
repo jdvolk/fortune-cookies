@@ -18,6 +18,10 @@ export const Cookie = (props) => {
           <section className="Fortune"> 
             <h3>Fortune:</h3>
             <p>{fortuneCookie.fortune.message}</p>
+          </section>
+          <section className="Lucky-nums"> 
+            <h3>Lucky Numbers!</h3>
+            <p>{fortuneCookie.lotto.numbers.toString()}</p>
           </section> 
         </section>
       </button>
@@ -36,10 +40,6 @@ export const Cookie = (props) => {
             <p> {fortuneCookie.lesson.chinese} </p>
             <p> {fortuneCookie.lesson.pronunciation} </p>
           </section> 
-          <section className="Lucky-nums"> 
-            <h3>Lucky Numbers!</h3>
-            <p>{fortuneCookie.lotto.numbers.toString()}</p>
-          </section>
         </section>
       </button>
     )
