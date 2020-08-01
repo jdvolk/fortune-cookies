@@ -3,7 +3,7 @@ import './App.css';
 import './MediaQueries.css';
 import { render } from '@testing-library/react';
 import {getOneCookie} from '../ApiCalls';
-import { Cookie } from '../Cookie/Cookie';
+import { CookiePaper } from '../Cookie/CookiePaper';
 import { NavBar } from '../NavBar/NavBar'
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       cookies: [],
       isClicked: false,
-      isOpen: false,
+      // isOpen: false,
     }
   }
   
@@ -35,12 +35,12 @@ class App extends Component {
     return (
       <div className="App">
         <section className="App-header">
-         <NavBar 
+         {/* <NavBar 
            isOpen={this.state.isOpen}
-         />
+         /> */}
           <section className="Main-page">
             <section className="Cookie-container">
-              <Cookie 
+              <CookiePaper 
                 cookies={this.state.cookies}
                 handleFortuneClick={this.handleFortuneClick}
                 isClicked={this.state.isClicked}

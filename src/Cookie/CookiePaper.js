@@ -1,7 +1,10 @@
 import React from 'react';
-import './Cookie.css';
+import LeftCookie from '../Assets/cookie-left.png'
+import RightCookie from '../Assets/cookie-right.png'
+import './CookiePaper.css';
 
-export const Cookie = (props) => {
+
+export const CookiePaper = (props) => {
   if(props.cookies.length === 0) {
     return (
       <p>Press button for cookie</p>
@@ -10,6 +13,9 @@ export const Cookie = (props) => {
     const fortuneCookie = props.cookies[0]
     console.log(fortuneCookie.fortune.message)
     return ( 
+      <>
+      <img className="LeftCookie" src={LeftCookie} />
+      <img className="RightCookie" src={RightCookie}  />
       <button 
         className="cookie-paper"
         onClick={props.handleFortuneClick}
@@ -25,6 +31,7 @@ export const Cookie = (props) => {
           </section> 
         </section>
       </button>
+      </>
     )
   } else {
     const fortuneCookie = props.cookies[0]
