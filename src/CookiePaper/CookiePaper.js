@@ -13,9 +13,6 @@ export const CookiePaper = (props) => {
     const fortuneCookie = props.cookies[0]
     console.log(fortuneCookie.fortune.message)
     return ( 
-      <>
-      <img className="LeftCookie" src={LeftCookie} />
-      <img className="RightCookie" src={RightCookie}  />
       <button 
         className="cookie-paper"
         onClick={props.handleFortuneClick}
@@ -31,7 +28,6 @@ export const CookiePaper = (props) => {
           </section> 
         </section>
       </button>
-      </>
     )
   } else {
     const fortuneCookie = props.cookies[0]

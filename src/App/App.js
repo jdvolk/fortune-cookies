@@ -3,7 +3,7 @@ import './App.css';
 import './MediaQueries.css';
 import { render } from '@testing-library/react';
 import {getOneCookie} from '../ApiCalls';
-import { CookiePaper } from '../Cookie/CookiePaper';
+import { CookiePaper } from '../CookiePaper/CookiePaper';
 import { NavBar } from '../NavBar/NavBar'
 
 class App extends Component {
