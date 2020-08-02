@@ -48,3 +48,5 @@ export const CookiePaper = (props) => {
 		)
 	}
 }
+
+export default CookiePaper;
