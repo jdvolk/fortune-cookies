@@ -5,7 +5,8 @@ import { render } from '@testing-library/react';
 import {getOneCookie} from '../ApiCalls';
 import { CookiePaper } from '../CookiePaper/CookiePaper';
 import { Cookie } from '../Cookie/Cookie';
-import { NavBar } from '../NavBar/NavBar'
+import { NavBar } from '../NavBar/NavBar';
+import { classNames } from 'classnames'
 
 export class App extends Component {
   constructor() {
@@ -14,25 +15,33 @@ export class App extends Component {
       cookies: [],
       isClicked: false,
       isOpen: false,
+      isCookieHidden: true
     }
   }
   
-  // componentDidMount = () => {
-  //   this.fetchOneCookie()
-  // }
-
   fetchOneCookie = async  () => {
     const cookie = await getOneCookie();
     this.setState({ cookies: [...cookie, ...this.state.cookies]})
     this.setState({isClicked: false})
     this.setState({isOpen: false})
+    this.setState({isCookieHidden: false})
   }
-  handleFortuneClick = () => {
+
+  handlePaperClick = () => {
     this.setState({isClicked: !this.state.isClicked})
   }
-  handleNavOpen = () => {
 
+  // handleNavOpen = () => {
+
+  // }
+  handleCookieOpen = () => {
+    this.setState({isOpen: !this.state.isOpen});
+    // this.setState({isCookieHidden: !this.state.isCookieHidden});
   }
+  handleCookieUnmount = () => {
+    this.setState({isCookieHidden: !this.state.isCookieHidden});
+  }
+
   render() {
     return (
       <div className="App">
@@ -40,15 +49,23 @@ export class App extends Component {
          {/* <NavBar 
            isOpen={this.state.isOpen}
          /> */}
-          <section className="Main-page">
-            <section className="Cookie-container">
+          <section className='Main-page'>
+            <section className='Cookie-container'>
+            {!this.state.isCookieHidden &&
               <Cookie
                 isOpen={this.state.isOpen}
+                classNames={this.state.classNames}
+                isCookieHidden={this.state.isCookieHidden}
+                handleCookieOpen={this.handleCookieOpen}
+                handleCookieUnmount={this.handleCookieUnmount}
+                // onAnimationEnd={this.onAnimationEnd}
               />
-              <CookiePaper 
+            }
+              <CookiePaper
                 cookies={this.state.cookies}
-                handleFortuneClick={this.handleFortuneClick}
+                handlePaperClick={this.handlePaperClick}
                 isClicked={this.state.isClicked}
+                isOpen={this.state.isOpen}
               />
             </section>
             <button 

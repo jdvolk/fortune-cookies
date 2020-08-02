@@ -5,53 +5,63 @@ import LeftCookie from '../Assets/cookie-left.png'
 import RightCookie from '../Assets/cookie-right.png'
 
 export class Cookie extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       animationFinished: false,
-      classNames: ""
+      classNames: "",
+      isClicked: false
     }
   }
-
+  
+  handleClick = () => {
+    this.setState({isClicked: !this.state.isClicked});
+    this.props.handleCookieOpen();
+  }
 
   startStopAnimation = () => {
     const { classNames } = this.state;
     this.setState({ classNames: classNames ? "" : "Animation" });
+
+    this.props.handleCookieOpen();
   };
   
-  onAnimationStart = () => {
-    this.setState({
-      animationFinished: false,
-    });
-  };
+  // onAnimationStart = () => {
+  //   this.setState({
+  //     animationFinished: false,
+  //   });
+  // };
 
-  onAnimationEnd = () => {
-    this.setState({
-      animationFinished: true,
-    });
-  };
+  // onAnimationEnd = () => {
+  //   console.log("bruh")
+  //   this.setState({
+  //     animationFinished: true,
+  //   });
+  // };
 
 
   // const [breakLeft, setBreakLeft, breakRight, setBreakRight] = React.useSate(0)
 
   render() {
+
     // const { animationFinished } = this.state;
     return (
       <section 
-        className="WholeCookie"
-        onClick={this.startStopAnimation}
+        className={this.props.isCookieHidden? "WholeCookieHidden" : "WholeCookieAnimation"}
+        // onAnimationEnd={() => this.onAnimationEnd}
+        onClick={this.handleClick}
       >
         <img 
-          className={`LeftCookie${this.state.classNames}`} 
-          src={LeftCookie} 
-          onAnimationStart={() => this.onAnimationStart}
-          onAnimationEnd={() => this.onAnimationEnd}
+          className={this.state.isClicked? 'LeftCookieAnimation' : 'LeftCookie'}
+          src={LeftCookie}  
+          // onAnimationStart={() => this.onAnimationStart}
+          // onAnimationEnd={() => this.onAnimationEnd}
         />
         <img 
-          className={`RightCookie${this.state.classNames}`} 
+          className={this.state.isClicked? 'RightCookieAnimation' : 'RightCookie'} 
           src={RightCookie}  
-          onAnimationStart={() => this.onAnimationStart}
-          onAnimationEnd={() => this.onAnimationEnd}
+          // onAnimationStart={() => this.onAnimationStart}
+          onAnimationEnd={this.props.handleCookieUnmount}
         />
       </section>
     )

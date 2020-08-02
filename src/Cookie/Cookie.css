@@ -1,11 +1,18 @@
-.WholeCookie {
+.WholeCookieHidden {
+	margin-left: 35px;
+	visibility: hidden;
+}
 
+.WholeCookieAnimation {
+	margin-left: 35px;
+	animation: popIn .7s ease-in forwards;
 }
 
 .LeftCookieAnimation{
 	transform: rotate(25deg);
 	transform-origin: top right;
-  animation: breakLeft 1s ease-in forwards;
+	animation: breakLeft 1s ease-in forwards;
+
 }
 
 
@@ -46,5 +53,17 @@
 	to {
 		opacity: 0;
 		transform: translateX(14em) rotate(-25deg);
+	}
+}
+
+@keyframes popIn {
+	from {
+		transform: scale(0);
+	}
+	75% {
+		transform: scale(1.1);
+	}
+	to {
+		transform: scale(1);
 	}
 }

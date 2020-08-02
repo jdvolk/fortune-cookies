@@ -14,8 +14,8 @@ export const CookiePaper = (props) => {
     console.log(fortuneCookie.fortune.message)
     return ( 
       <button 
-        className="cookie-paper"
-        onClick={props.handleFortuneClick}
+        className={props.isOpen ? "cookie-paper" : "hidden"}
+        onClick={props.handlePaperClick}
       >
         <section className="Cookie">
           <section className="Fortune"> 
@@ -34,7 +34,7 @@ export const CookiePaper = (props) => {
     return (
     <button
       className="cookie-paper"
-      onClick={props.handleFortuneClick}
+      onClick={props.handlePaperClick}
     >
       <section>
           <section className="Lesson"> 

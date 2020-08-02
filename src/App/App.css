@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  overflow-x: hidden;
 }
 
 .button {
@@ -25,7 +26,9 @@
   color: white;
   box-shadow: inset 4px 7px 13px 0px #000000c2, inset -4px -2px 13px 0px #000000c2, 4px 7px 13px 0px #000000c2;
 }
-
+.Hidden {
+  visibility: hidden
+}
 
 /* button.button {
   border-radius: 100rem;
@@ -86,3 +89,5 @@ button.button:hover {
     transform: rotate(360deg);
   }
 }
+
+
