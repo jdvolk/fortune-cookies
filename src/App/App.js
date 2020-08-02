@@ -6,7 +6,6 @@ import {getOneCookie} from '../ApiCalls';
 import { CookiePaper } from '../CookiePaper/CookiePaper';
 import { Cookie } from '../Cookie/Cookie';
 import { NavBar } from '../NavBar/NavBar';
-import { classNames } from 'classnames'
 
 export class App extends Component {
 	constructor() {
