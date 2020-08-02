@@ -4,15 +4,16 @@ import './MediaQueries.css';
 import { render } from '@testing-library/react';
 import {getOneCookie} from '../ApiCalls';
 import { CookiePaper } from '../CookiePaper/CookiePaper';
+import { Cookie } from '../Cookie/Cookie';
 import { NavBar } from '../NavBar/NavBar'
 
-class App extends Component {
+export class App extends Component {
   constructor() {
     super();
     this.state = {
       cookies: [],
       isClicked: false,
-      // isOpen: false,
+      isOpen: false,
     }
   }
   
@@ -24,6 +25,7 @@ class App extends Component {
     const cookie = await getOneCookie();
     this.setState({ cookies: [...cookie, ...this.state.cookies]})
     this.setState({isClicked: false})
+    this.setState({isOpen: false})
   }
   handleFortuneClick = () => {
     this.setState({isClicked: !this.state.isClicked})
@@ -40,6 +42,9 @@ class App extends Component {
          /> */}
           <section className="Main-page">
             <section className="Cookie-container">
+              <Cookie
+                isOpen={this.state.isOpen}
+              />
               <CookiePaper 
                 cookies={this.state.cookies}
                 handleFortuneClick={this.handleFortuneClick}

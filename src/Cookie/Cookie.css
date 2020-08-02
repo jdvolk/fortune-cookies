@@ -1,0 +1,50 @@
+.WholeCookie {
+
+}
+
+.LeftCookieAnimation{
+	transform: rotate(25deg);
+	transform-origin: top right;
+  animation: breakLeft 1s ease-in forwards;
+}
+
+
+.RightCookieAnimation {
+	transform: rotate(-25deg);
+  transform-origin: top left;
+  animation: breakRight 1s ease-in forwards;
+}
+
+@keyframes breakLeft {
+	from {
+		transform: translateX(0) rotate(0deg);
+	}
+	30%, 40% {
+		transform: translateX(0) rotate(15deg);
+	}
+	70%, 80% {
+		opacity: 1;
+		transform: translateX(-14em) rotate(25deg);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(-14em) rotate(25deg);
+	}
+}
+
+@keyframes breakRight {
+	from {
+		transform: translateX(0) rotate(0deg);
+	}
+	30%, 40% {
+		transform: translateX(0) rotate(-15deg);
+	}
+	70%, 80% {
+		opacity: 1;
+		transform: translateX(14em) rotate(-25deg);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(14em) rotate(-25deg);
+	}
+}
