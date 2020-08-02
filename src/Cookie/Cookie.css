@@ -14,14 +14,13 @@
 	transform: rotate(25deg);
 	transform-origin: top right;
 	animation: breakLeft 1s ease-in forwards;
-
 }
 
 
 .RightCookieAnimation {
 	transform: rotate(-25deg);
-  transform-origin: top left;
-  animation: breakRight 1s ease-in forwards;
+	transform-origin: top left;
+	animation: breakRight 1s ease-in forwards;
 }
 
 @keyframes breakLeft {

@@ -1,100 +1,100 @@
 .App {
-  text-align: center;
-  overflow-x: hidden;
+	text-align: center;
+	overflow-x: hidden;
 }
 
 .button {
-  background: #333333;
-  border-radius: 10px;
-  color: #fdfcfce7;
-  cursor: pointer;
-  font-size: 24px;
-  min-width: 3em;
-  min-height: 3em;
-  /* margin-top: 4%; */
-  outline: none;
-  border: solid 3px transparent;
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #78e4ff, #ff48fa);
-  box-shadow: 4px 7px 13px 0px #000000c2, inset 3px 3px 6px 0px #4c4c4c, inset -4px -4px 4px 0px #292929, 2px 1000px 1px #282d34 inset;
-  background-origin: border-box;
-  background-clip: content-box, border-box;
+	background: #333333;
+	border-radius: 10px;
+	color: #fdfcfce7;
+	cursor: pointer;
+	font-size: 24px;
+	min-width: 3em;
+	min-height: 3em;
+	/* margin-top: 4%; */
+	outline: none;
+	border: solid 3px transparent;
+	background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #78e4ff, #ff48fa);
+	box-shadow: 4px 7px 13px 0px #000000c2, inset 3px 3px 6px 0px #4c4c4c, inset -4px -4px 4px 0px #292929, 2px 1000px 1px #282d34 inset;
+	background-origin: border-box;
+	background-clip: content-box, border-box;
 
 }
 
 .button:hover {
-  color: white;
-  box-shadow: inset 4px 7px 13px 0px #000000c2, inset -4px -2px 13px 0px #000000c2, 4px 7px 13px 0px #000000c2; 
+	color: white;
+	box-shadow: inset 4px 7px 13px 0px #000000c2, inset -4px -2px 13px 0px #000000c2, 4px 7px 13px 0px #000000c2; 
 }
 .button:active {
-  color: white;
-  box-shadow: inset 4px 7px 13px 0px #000000c2, inset -4px -2px 13px 0px #000000c2, 4px 7px 13px 0px #000000c2;
+	color: white;
+	box-shadow: inset 4px 7px 13px 0px #000000c2, inset -4px -2px 13px 0px #000000c2, 4px 7px 13px 0px #000000c2;
 }
 .Hidden {
-  visibility: hidden
+	visibility: hidden
 }
 
 .Cookie-container {
-  height: 17em;
-  display: grid;
+	height: 17em;
+	display: grid;
 }
 /* button.button {
-  border-radius: 100rem;
-  padding: 1rem;
-  font-family: 'Avenir Next';
-  font-size: 1rem;
-  padding: .5rem 3rem;
-  color: $color-black;
-  box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
-  border: solid 3px transparent;
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #78e4ff, #ff48fa);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  box-shadow: 2px 1000px 1px #fff inset;
+	border-radius: 100rem;
+	padding: 1rem;
+	font-family: 'Avenir Next';
+	font-size: 1rem;
+	padding: .5rem 3rem;
+	color: $color-black;
+	box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+	border: solid 3px transparent;
+	background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #78e4ff, #ff48fa);
+	background-origin: border-box;
+	background-clip: content-box, border-box;
+	box-shadow: 2px 1000px 1px #fff inset;
 }
 
 button.button:hover {
-  box-shadow: none;
-  color: white;
+	box-shadow: none;
+	color: white;
 } */
 
 
 
 /* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+	height: 40vmin;
+	pointer-events: none;
 } */
 
 /* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 } */
 
 .App-header {
-  display: flex;
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	display: flex;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 .Main-page {
-  margin-top: 25vh;
+	margin-top: 25vh;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 /* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 } */
 
 
