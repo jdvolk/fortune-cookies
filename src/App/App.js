@@ -31,13 +31,10 @@ export class App extends Component {
     this.setState({isClicked: !this.state.isClicked})
   }
 
-  // handleNavOpen = () => {
-
-  // }
   handleCookieOpen = () => {
     this.setState({isOpen: !this.state.isOpen});
-    // this.setState({isCookieHidden: !this.state.isCookieHidden});
   }
+  
   handleCookieUnmount = () => {
     this.setState({isCookieHidden: !this.state.isCookieHidden});
   }

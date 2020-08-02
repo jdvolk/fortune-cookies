@@ -2,3 +2,19 @@
   display: none;
 
 }
+.cookie-paper {
+  animation: popIn .7s ease-in forwards;
+  grid-area: 1 / 1;
+}
+
+@keyframes popIn {
+	from {
+		transform: scale(0);
+	}
+	75% {
+		transform: scale(1.1);
+	}
+	to {
+		transform: scale(1);
+	}
+}

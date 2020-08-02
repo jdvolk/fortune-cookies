@@ -19,32 +19,7 @@ export class Cookie extends Component {
     this.props.handleCookieOpen();
   }
 
-  startStopAnimation = () => {
-    const { classNames } = this.state;
-    this.setState({ classNames: classNames ? "" : "Animation" });
-
-    this.props.handleCookieOpen();
-  };
-  
-  // onAnimationStart = () => {
-  //   this.setState({
-  //     animationFinished: false,
-  //   });
-  // };
-
-  // onAnimationEnd = () => {
-  //   console.log("bruh")
-  //   this.setState({
-  //     animationFinished: true,
-  //   });
-  // };
-
-
-  // const [breakLeft, setBreakLeft, breakRight, setBreakRight] = React.useSate(0)
-
   render() {
-
-    // const { animationFinished } = this.state;
     return (
       <section 
         className={this.props.isCookieHidden? "WholeCookieHidden" : "WholeCookieAnimation"}
@@ -54,13 +29,10 @@ export class Cookie extends Component {
         <img 
           className={this.state.isClicked? 'LeftCookieAnimation' : 'LeftCookie'}
           src={LeftCookie}  
-          // onAnimationStart={() => this.onAnimationStart}
-          // onAnimationEnd={() => this.onAnimationEnd}
         />
         <img 
           className={this.state.isClicked? 'RightCookieAnimation' : 'RightCookie'} 
           src={RightCookie}  
-          // onAnimationStart={() => this.onAnimationStart}
           onAnimationEnd={this.props.handleCookieUnmount}
         />
       </section>
