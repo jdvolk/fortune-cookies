@@ -23,16 +23,19 @@ export class Cookie extends Component {
 		return (
 			<section 
 				className={this.props.isCookieHidden? "WholeCookieHidden" : "WholeCookieAnimation"}
+				data-testid="WholeCookie"
 				// onAnimationEnd={() => this.onAnimationEnd}
 				onClick={this.handleClick}
 			>
 				<img 
 					className={this.state.isClicked? 'LeftCookieAnimation' : 'LeftCookie'}
 					src={LeftCookie}  
+					alt="left half of fortune cookie"
 				/>
 				<img 
 					className={this.state.isClicked? 'RightCookieAnimation' : 'RightCookie'} 
 					src={RightCookie}  
+					alt="right half of fortune cookie"
 					onAnimationEnd={this.props.handleCookieUnmount}
 				/>
 			</section>
