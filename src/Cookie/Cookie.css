@@ -4,6 +4,7 @@
 }
 
 .WholeCookieAnimation {
+	filter: drop-shadow(8px 7px 6px black);
 	grid-area: 1 / 1;
 	margin-left: 35px;
 	animation: popIn .7s ease-in forwards;

@@ -11,10 +11,9 @@
   font-size: 24px;
   min-width: 3em;
   min-height: 3em;
-  margin-top: 4%;
+  /* margin-top: 4%; */
   outline: none;
   border: solid 3px transparent;
-  /* box-shadow: 2px 1000px 1px #333333 inset; */
   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #78e4ff, #ff48fa);
   box-shadow: 4px 7px 13px 0px #000000c2, inset 3px 3px 6px 0px #4c4c4c, inset -4px -4px 4px 0px #292929, 2px 1000px 1px #282d34 inset;
   background-origin: border-box;
@@ -24,6 +23,10 @@
 
 .button:hover {
   color: white;
+  box-shadow: inset 4px 7px 13px 0px #000000c2, inset -4px -2px 13px 0px #000000c2, 4px 7px 13px 0px #000000c2; 
+}
+.button:active {
+  color: white;
   box-shadow: inset 4px 7px 13px 0px #000000c2, inset -4px -2px 13px 0px #000000c2, 4px 7px 13px 0px #000000c2;
 }
 .Hidden {
@@ -31,6 +34,7 @@
 }
 
 .Cookie-container {
+  height: 17em;
   display: grid;
 }
 /* button.button {
