@@ -10,7 +10,7 @@ export const CookiePaper = (props) => {
 			<p>Press button for cookie</p>
 		)
 	} else if (!props.isClicked) {
-		const fortuneCookie = props.cookies[0]
+		const fortuneCookie = props.cookies[props.currentIndex]
 		return ( 
 			<button 
 				className={props.isOpen ? "cookie-paper" : "hidden"}
@@ -29,7 +29,7 @@ export const CookiePaper = (props) => {
 			</button>
 		)
 	} else {
-		const fortuneCookie = props.cookies[0]
+		const fortuneCookie = props.cookies[props.currentIndex]
 		return (
 			<button
 				className="cookie-paper"
