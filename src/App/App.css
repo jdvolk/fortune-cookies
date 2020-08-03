@@ -1,43 +1,47 @@
-
-
 .App {
-	text-align: center;
-	overflow-x: hidden;
+  text-align: center;
+  overflow-x: hidden;
 }
 
 .button {
-	background: #333333;
-	border-radius: 10px;
-	color: #fdfcfce7;
-	cursor: pointer;
-	font-size: 24px;
-	min-width: 3em;
-	min-height: 3em;
-	/* margin-top: 4%; */
-	outline: none;
-	border: solid 3px transparent;
-	background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #78e4ff, #ff48fa);
-	box-shadow: 4px 7px 13px 0px #000000c2, inset 3px 3px 6px 0px #4c4c4c, inset -4px -4px 4px 0px #292929, 2px 1000px 1px #282d34 inset;
-	background-origin: border-box;
-	background-clip: content-box, border-box;
-
+  background: #333333;
+  border-radius: 10px;
+  color: #fdfcfce7;
+  cursor: pointer;
+  font-size: 24px;
+  min-width: 3em;
+  min-height: 3em;
+  /* margin-top: 4%; */
+  outline: none;
+  border: solid 3px transparent;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(101deg, #78e4ff, #ff48fa);
+  box-shadow: 4px 7px 13px 0px #000000c2, inset 3px 3px 6px 0px #4c4c4c,
+    inset -4px -4px 4px 0px #292929, 2px 1000px 1px #282d34 inset;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
 }
 
 .button:hover {
-	color: white;
-	box-shadow: inset 4px 7px 13px 0px #000000c2, inset -4px -2px 13px 0px #000000c2, 4px 7px 13px 0px #000000c2; 
+  color: white;
+  box-shadow: inset 4px 7px 13px 0px #000000c2,
+    inset -4px -2px 13px 0px #000000c2, 4px 7px 13px 0px #000000c2;
 }
 .button:active {
-	color: white;
-	box-shadow: inset 4px 7px 13px 0px #000000c2, inset -4px -2px 13px 0px #000000c2, 4px 7px 13px 0px #000000c2;
+  color: white;
+  box-shadow: inset 4px 7px 13px 0px #000000c2,
+    inset -4px -2px 13px 0px #000000c2, inset 0px 0px 13px 0px #000000c2;
 }
 .Hidden {
-	visibility: hidden
+  visibility: hidden;
 }
 
 .Cookie-container {
-	height: 17em;
-	display: grid;
+  height: 17em;
+  display: grid;
 }
 /* button.button {
 	border-radius: 100rem;
@@ -59,8 +63,6 @@ button.button:hover {
 	color: white;
 } */
 
-
-
 /* .App-logo {
 	height: 40vmin;
 	pointer-events: none;
@@ -73,21 +75,21 @@ button.button:hover {
 } */
 
 .App-header {
-	display: flex;
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
+  display: flex;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 .Main-page {
-	margin-top: 25vh;
+  margin-top: 25vh;
 }
 
 .App-link {
-	color: #61dafb;
+  color: #61dafb;
 }
 
 /* @keyframes App-logo-spin {
@@ -99,34 +101,48 @@ button.button:hover {
 	}
 } */
 
-
-.navContainer{
-	display: flex;
-	justify-content: center;
-	justify-self: center;
-	flex-wrap: none;
-	flex-direction: row;
-
+.navContainer {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  flex-wrap: none;
+  flex-direction: row;
 }
-.back-arrow, .front-arrow {
-	background-image: url('../Assets/arrow.svg');
-	background-size: contain;
-	width: 30px;
-	height: 30px;
-	background-size: contain;
-	background-repeat: no-repeat;
-	padding: 17px;
-	fill: blue;
-	display: inline-block;
-	margin: 5px;
+.back-arrow,
+.front-arrow {
+  background-image: url("../Assets/arrow.svg");
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 17px;
+  fill: blue;
+  display: inline-block;
+  margin: 5px;
+  cursor: pointer;
 }
 .back-arrow {
-	margin-right: 10px;
-	transform: rotate(180deg);
-	filter: drop-shadow(0px 0px 5px  #78e4ff);
-}
-.front-arrow {
-	margin-left: 10px;
-	filter: drop-shadow(0px 0px 5px  #ff48fa);
+  margin-right: 10px;
+  transform: rotate(180deg);
+  filter: drop-shadow(0px 0px 5px #78e4ff);
 }
 
+.back-arrow:hover {
+  transform: scale(1.1) rotate(180deg);
+}
+.back-arrow:active {
+  transform: scale(1) rotate(180deg);
+}
+
+.front-arrow {
+  margin-left: 10px;
+  filter: drop-shadow(0px 0px 5px #ff48fa);
+}
+
+.front-arrow:hover {
+  transform: scale(1.1);
+}
+.front-arrow:active {
+  transform: scale(1);
+}
