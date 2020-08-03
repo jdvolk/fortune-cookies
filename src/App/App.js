@@ -75,13 +75,13 @@ export class App extends Component {
 							/>
 						</section>
 						<section className="navContainer">
-							<section className="back-arrow" onClick={this.incrementIndex}></section>
+							<section className="back-arrow" onClick={this.incrementIndex} data-testid="back-arrow"></section>
 							<button 
 								className="button"
 								onClick={this.fetchOneCookie}
 							>
 							</button>
-							<section className="front-arrow" onClick={this.decrementIndex}></section>
+							<section className="front-arrow" onClick={this.decrementIndex} data-testid="front-arrow"></section>
 						</section>
 						{/* <button><section className="front-arrow"></section></button> */}
 					</section>

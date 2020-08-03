@@ -185,7 +185,7 @@ describe('App', () => {
   })
   it('should fetch second cookie after clicking button', async () => {
     getOneCookie.mockResolvedValueOnce(mockGetOneCookie);
-    const {  getByRole, getByAltText, getByTestId, getAllByRole, getByText } = render(
+    const {  getByRole,  getByTestId, getAllByRole, getByText } = render(
       <MemoryRouter>
         <App />
       </MemoryRouter>
@@ -209,11 +209,102 @@ describe('App', () => {
     fireEvent.click(button);
 
     fireEvent.click(cookieButton);
+
     waitFor(() => {
       const fortuneText = getByText("You can/t put an old head on young shoulders", {exact: false});
       const lottoNumbers = getByText('24,44,20,39,32,58');
       expect(fortuneText).toBeInTheDocument();
       expect(lottoNumbers).toBeInTheDocument();
     })
+  })
+  it("should be able to view past cookies", async () => {
+    const {  getByRole,  getByTestId, getAllByRole, getByAltText, getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>      
+    );
+    const button =  getByRole('button');
+    
+    fireEvent.click(button);
+
+    await waitFor(() => {
+    });
+    const cookieButton = getByTestId('WholeCookie');
+    fireEvent.click(cookieButton);
+
+    const cookiePaper = getAllByRole('button')[1];
+    expect(cookiePaper).toBeInTheDocument();
+
+    getOneCookie.mockResolvedValueOnce(mockGetAnotherCookie);
+
+    fireEvent.click(cookiePaper);
+
+    fireEvent.click(button);
+
+    fireEvent.click(cookieButton);
+
+    const backButton = getByTestId('back-arrow');
+    const frontButton = getByTestId('front-arrow');
+
+    expect(backButton).toBeInTheDocument();
+    expect(frontButton).toBeInTheDocument();
+
+    fireEvent.click(backButton)
+
+    const fortuneText = getByText("Man is the head but woman turns it.")
+    expect(fortuneText).toBeInTheDocument();
+
+    const fortuneLabel = getByText("Fortune:", { exact: false });
+    expect(fortuneLabel).toBeInTheDocument();
+
+    const lottoText = getByText('14,49,33,51,1,57');
+    expect(lottoText).toBeInTheDocument();
+
+  })
+  it("should be able to go from past cookies to the current cookie", async () => {
+    const {  getByRole,  getByTestId, getAllByRole, getByAltText, getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>      
+    );
+    const button =  getByRole('button');
+    
+    fireEvent.click(button);
+
+    await waitFor(() => {
+    });
+    const cookieButton = getByTestId('WholeCookie');
+    fireEvent.click(cookieButton);
+
+    const cookiePaper = getAllByRole('button')[1];
+  
+    getOneCookie.mockResolvedValueOnce(mockGetAnotherCookie);
+
+    fireEvent.click(cookiePaper);
+
+    fireEvent.click(button);
+
+    fireEvent.click(cookieButton);
+
+    const backButton = getByTestId('back-arrow');
+    const frontButton = getByTestId('front-arrow');
+
+    expect(backButton).toBeInTheDocument();
+    expect(frontButton).toBeInTheDocument();
+
+    fireEvent.click(backButton);
+
+    const fortuneText = getByText("Man is the head but woman turns it.")
+    expect(fortuneText).toBeInTheDocument();
+
+    fireEvent.click(frontButton);
+
+    waitFor(() => {
+      const fortuneText2 = getByText("You can/t put an old head on young shoulders", {exact: false});
+      const lottoNumbers = getByText('24,44,20,39,32,58');
+      expect(fortuneText2).toBeInTheDocument();
+      expect(lottoNumbers).toBeInTheDocument();
+    })
+
   })
 })

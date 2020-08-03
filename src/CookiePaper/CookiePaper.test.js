@@ -21,6 +21,7 @@ describe('cookie paper', () => {
     const { getByRole } = render(
       <CookiePaper
         cookies={cookies}
+        currentIndex={0}
       />
     );
     const CookiePaperButton = getByRole('button');
@@ -31,6 +32,7 @@ describe('cookie paper', () => {
     const { getByText } = render(
       <CookiePaper
         cookies={cookies}
+        currentIndex={0}
       />
     );
     const cookieFortune = getByText('Man is the head but woman turns it.');
@@ -45,6 +47,7 @@ describe('cookie paper', () => {
       <CookiePaper
         cookies={cookies}
         isClicked={mockIsClicked}
+        currentIndex={0}
       />
     );
     const CookiePaperButton = getByRole('button');
@@ -67,6 +70,7 @@ describe('cookie paper', () => {
       <CookiePaper
         cookies={cookies}
         isClicked={mockIsClicked}
+        currentIndex={0}
       />
     );
     const CookiePaperButton = getByRole('button');

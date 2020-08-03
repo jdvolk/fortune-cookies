@@ -1,20 +1,14 @@
 import React from 'react';
 import "./NavBar.css";
+import arrowSVG from '../Assets/arrow.svg';
 
 export const NavBar = () => {
-  if(this.props.isOpen) {
     return (
       <section className="Nav-bar">
-      <button
-        className="button Nav-button"
-      ></button>
+      <img src={arrowSVG} alt="back arrow" />
+      {/* <button
+        className="button forward-button"
+      ></button> */}
     </section>
     )
-  } else {
-    return (
-      <section className="Nav-bar">
-        
-      </section>
-    )
-  }
 }
