@@ -18,13 +18,13 @@ describe('App', () => {
       }
     ]
     
-    mockGetAnotherCookie = [ [
+    mockGetAnotherCookie = [ 
       {
         fortune: {message: "You can/t put an old head on young shoulders", id: "5403c81dc2fea4020029ab59"},
         lesson: {english: '1,000,000,000,000', chinese: "一兆", pronunciation: "yī-zhào"},
         lotto: {id: "001400490033005100010057", numbers: [24,44,20,39,32,58]}
       }
-    ]]
+    ]
   })
   it('should render button on page load', () => {
     const {  getByRole } = render(
@@ -182,5 +182,38 @@ describe('App', () => {
 
     const lottoText = getByText('14,49,33,51,1,57');
     expect(lottoText).toBeInTheDocument();
+  })
+  it('should fetch second cookie after clicking button', async () => {
+    getOneCookie.mockResolvedValueOnce(mockGetOneCookie);
+    const {  getByRole, getByAltText, getByTestId, getAllByRole, getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    );
+    const button =  getByRole('button');
+    
+    fireEvent.click(button);
+
+    await waitFor(() => {
+    });
+    const cookieButton = getByTestId('WholeCookie');
+    fireEvent.click(cookieButton);
+
+    const cookiePaper = getAllByRole('button')[1];
+    expect(cookiePaper).toBeInTheDocument();
+
+    getOneCookie.mockResolvedValueOnce(mockGetAnotherCookie);
+
+    fireEvent.click(cookiePaper);
+
+    fireEvent.click(button);
+
+    fireEvent.click(cookieButton);
+    waitFor(() => {
+      const fortuneText = getByText("You can/t put an old head on young shoulders", {exact: false});
+      const lottoNumbers = getByText('24,44,20,39,32,58');
+      expect(fortuneText).toBeInTheDocument();
+      expect(lottoNumbers).toBeInTheDocument();
+    })
   })
 })

@@ -11,7 +11,6 @@ export const CookiePaper = (props) => {
 		)
 	} else if (!props.isClicked) {
 		const fortuneCookie = props.cookies[0]
-		console.log(fortuneCookie.fortune.message)
 		return ( 
 			<button 
 				className={props.isOpen ? "cookie-paper" : "hidden"}
@@ -32,18 +31,18 @@ export const CookiePaper = (props) => {
 	} else {
 		const fortuneCookie = props.cookies[0]
 		return (
-		<button
-			className="cookie-paper"
-			onClick={props.handlePaperClick}
-		>
-			<section>
-					<section className="Lesson"> 
-						<h3>Learn Chinese:</h3>
-						<p> {fortuneCookie.lesson.english} </p>
-						<p> {fortuneCookie.lesson.chinese} </p>
-						<p> {fortuneCookie.lesson.pronunciation} </p>
-					</section> 
-				</section>
+			<button
+				className="cookie-paper"
+				onClick={props.handlePaperClick}
+			>
+				<section>
+						<section className="Lesson"> 
+							<h3>Learn Chinese:</h3>
+							<p> {fortuneCookie.lesson.english} </p>
+							<p> {fortuneCookie.lesson.chinese} </p>
+							<p> {fortuneCookie.lesson.pronunciation} </p>
+						</section> 
+					</section>
 			</button>
 		)
 	}
