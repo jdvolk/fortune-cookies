@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 import { render, fireEvent } from '@testing-library/react';
 import Cookie from './Cookie';
 import { MemoryRouter } from 'react-router-dom';
+
 // import { waitForElementToBeRemoved } from '@testing-library/dom'
 
 
