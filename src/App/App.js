@@ -6,6 +6,7 @@ import { getOneCookie } from '../ApiCalls';
 import { CookiePaper } from '../CookiePaper/CookiePaper';
 import { Cookie } from '../Cookie/Cookie';
 import { NavBar } from '../NavBar/NavBar';
+import arrowSVG from '../Assets/arrow.svg';
 
 export class App extends Component {
 	constructor() {
@@ -14,7 +15,8 @@ export class App extends Component {
 			cookies: [],
 			isClicked: false,
 			isOpen: false,
-			isCookieHidden: true
+			isCookieHidden: true,
+			currentIndex: 0
 		}
 	}
 	
@@ -24,6 +26,16 @@ export class App extends Component {
 		this.setState({isClicked: false})
 		this.setState({isOpen: false})
 		this.setState({isCookieHidden: false})
+		this.setState({currentIndex: 0})
+	}
+
+	incrementIndex = () => {
+		if(this.state.cookies.length - 1 > this.state.currentIndex)
+		this.setState({currentIndex: this.state.currentIndex + 1})
+	}
+	decrementIndex = () => {
+		if(this.state.currentIndex >= 1)
+		this.setState({currentIndex: this.state.currentIndex - 1})
 	}
 
 	handlePaperClick = () => {
@@ -42,9 +54,6 @@ export class App extends Component {
 		return (
 			<div className="App">
 				<section className="App-header">
-				 {/* <NavBar 
-					 isOpen={this.state.isOpen}
-				 /> */}
 					<section className='Main-page'>
 						<section className='Cookie-container'>
 						{!this.state.isCookieHidden &&
@@ -62,14 +71,21 @@ export class App extends Component {
 								handlePaperClick={this.handlePaperClick}
 								isClicked={this.state.isClicked}
 								isOpen={this.state.isOpen}
+								currentIndex={this.state.currentIndex}
 							/>
 						</section>
-						<button 
-							className="button"
-							onClick={this.fetchOneCookie}
-						>
-						</button>
+						<section className="navContainer">
+							<section className="back-arrow" onClick={this.incrementIndex}></section>
+							<button 
+								className="button"
+								onClick={this.fetchOneCookie}
+							>
+							</button>
+							<section className="front-arrow" onClick={this.decrementIndex}></section>
+						</section>
+						{/* <button><section className="front-arrow"></section></button> */}
 					</section>
+					{/* <NavBar /> */}
 				</section>
 			</div>
 		);
