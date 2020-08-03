@@ -9,6 +9,7 @@ jest.mock("../ApiCalls");
 describe('App', () => {
   let mockGetOneCookie;
   let mockGetAnotherCookie;
+  let mockFailedRequest;
   beforeEach(() => {
     mockGetOneCookie = [
       {
@@ -25,6 +26,17 @@ describe('App', () => {
         lotto: {id: "001400490033005100010057", numbers: [24,44,20,39,32,58]}
       }
     ]
+    mockFailedRequest = {
+      type: "cors", 
+      url: "http://fortunecookieapi.herokuapp.com/v1/coockie?limit=1", 
+      redirected: false, 
+      status: 404, 
+      ok: false, body: "error", 
+      falsestatus: 404, 
+      statusText: "Not Found", 
+      type: "cors", 
+      url: "http://fortunecookieapi.herokuapp.com/v1/coockie?limit=1" 
+    }
   })
   it('should render button on page load', () => {
     const {  getByRole } = render(
@@ -305,6 +317,44 @@ describe('App', () => {
       expect(fortuneText2).toBeInTheDocument();
       expect(lottoNumbers).toBeInTheDocument();
     })
+  })
+  it('should render error on cookie paper if api request.status != 200', async () => {
+    getOneCookie.mockResolvedValueOnce(mockFailedRequest);
+    const {  getByRole,  getByTestId, getAllByRole, getByAltText, getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>      
+    );
+    
+    const button =  getByRole('button');
+    await fireEvent.click(button);
 
+    await waitFor(() => {
+      const cookieButton = getByTestId('WholeCookie');
+      fireEvent.click(cookieButton);
+      const errorMessage = getByText("Sorry!", {exact: false});
+      expect(errorMessage).toBeInTheDocument();
+    })
+  })
+  it('should reset to home page after click of error', async () => {
+    getOneCookie.mockResolvedValueOnce(mockFailedRequest);
+    const {  getByRole,  getByTestId, getAllByRole, getByAltText, getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>      
+    );
+
+    const button =  getByRole('button');
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      const cookieButton = getByTestId('WholeCookie');
+      fireEvent.click(cookieButton);
+      const errorMessage = getByText("Sorry!", {exact: false});
+      fireEvent.click(errorMessage);
+    
+    })
+    const clickMessage = getByText('Press button for cookie');
+    expect(clickMessage).toBeInTheDocument();
   })
 })
