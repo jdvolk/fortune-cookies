@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import ReactDOM from "react-dom";
-import './Cookie.css'
+import './Cookie.css';
 import LeftCookie from '../Assets/cookie-left.png'
 import RightCookie from '../Assets/cookie-right.png'
 

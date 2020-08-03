@@ -6,7 +6,7 @@ import './CookiePaper.css';
 
 export const CookiePaper = (props) => {
 	if(props.error) {
-		var fortuneCookie = {fortune: {message: props.error}, lotto: {numbers: "There was an error retrieving your cookie"}}
+		const fortuneCookie = {fortune: {message: props.error}, lotto: {numbers: "There was an error retrieving your cookie"}}
 		return (
 			<>
 				<button 
