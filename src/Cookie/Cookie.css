@@ -8,6 +8,7 @@
 	grid-area: 1 / 1;
 	margin-left: 53px;
 	animation: popIn .7s ease-in forwards;
+	cursor: pointer;
 }
 
 .LeftCookieAnimation{
@@ -69,7 +70,7 @@
 	}
 }
 
-@media screen and (min-width: 300px) {
+@media screen and (max-width: 370px) {
 	.WholeCookieAnimation {
 		margin-left: 35px;
 	}

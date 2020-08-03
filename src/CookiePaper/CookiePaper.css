@@ -8,6 +8,7 @@
 	box-shadow: 6px 6px 13px 0px #000000c2; 
 	animation: popIn .7s ease-in forwards;
 	grid-area: 1 / 1;
+	cursor: pointer;
 }
 
 @keyframes popIn {
