@@ -72,7 +72,7 @@
 
 @media screen and (max-width: 370px) {
 	.WholeCookieAnimation {
-		margin-left: 35px;
+		margin-left: 30px;
 	}
 	img[alt="right half of fortune cookie"] {
 		width: 134px;
@@ -81,6 +81,5 @@
 	img[alt="left half of fortune cookie"] {
 		width: 101px;
 	}
-
 }
 

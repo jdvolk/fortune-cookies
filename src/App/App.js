@@ -1,12 +1,9 @@
 import React, { Component } from 'react'; 
 import './App.css';
-import './MediaQueries.css';
-// import { render } from '@testing-library/react';
 import { getOneCookie } from '../ApiCalls';
 import { CookiePaper } from '../CookiePaper/CookiePaper';
 import { Cookie } from '../Cookie/Cookie';
-import { NavBar } from '../NavBar/NavBar';
-import arrowSVG from '../Assets/arrow.svg';
+
 
 export class App extends Component {
 	constructor() {
