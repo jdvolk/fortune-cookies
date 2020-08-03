@@ -6,7 +6,7 @@
 .WholeCookieAnimation {
 	filter: drop-shadow(8px 7px 6px black);
 	grid-area: 1 / 1;
-	margin-left: 35px;
+	margin-left: 53px;
 	animation: popIn .7s ease-in forwards;
 }
 
@@ -68,3 +68,18 @@
 		transform: scale(1);
 	}
 }
+
+@media screen and (min-width: 300px) {
+	.WholeCookieAnimation {
+		margin-left: 35px;
+	}
+	img[alt="right half of fortune cookie"] {
+		width: 134px;
+	}
+
+	img[alt="left half of fortune cookie"] {
+		width: 101px;
+	}
+
+}
+
