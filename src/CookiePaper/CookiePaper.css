@@ -4,7 +4,7 @@
 
 .cookie-paper {
 	min-width: 35em;
-	max-height: 44%;
+	max-height: 50%;
 	box-shadow: 6px 6px 13px 0px #000000c2; 
 	animation: popIn .7s ease-in forwards;
 	grid-area: 1 / 1;
