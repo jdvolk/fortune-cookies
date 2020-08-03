@@ -1,3 +1,5 @@
+
+
 .App {
 	text-align: center;
 	overflow-x: hidden;
@@ -97,4 +99,34 @@ button.button:hover {
 	}
 } */
 
+
+.navContainer{
+	display: flex;
+	justify-content: center;
+	justify-self: center;
+	flex-wrap: none;
+	flex-direction: row;
+
+}
+.back-arrow, .front-arrow {
+	background-image: url('../Assets/arrow.svg');
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	padding: 17px;
+	fill: blue;
+	display: inline-block;
+	margin: 5px;
+}
+.back-arrow {
+	margin-right: 10px;
+	transform: rotate(180deg);
+	filter: drop-shadow(0px 0px 5px  #78e4ff);
+}
+.front-arrow {
+	margin-left: 10px;
+	filter: drop-shadow(0px 0px 5px  #ff48fa);
+}
 
