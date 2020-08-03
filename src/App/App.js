@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 import './App.css';
 import './MediaQueries.css';
-import { render } from '@testing-library/react';
+// import { render } from '@testing-library/react';
 import { getOneCookie } from '../ApiCalls';
 import { CookiePaper } from '../CookiePaper/CookiePaper';
 import { Cookie } from '../Cookie/Cookie';
@@ -21,12 +21,24 @@ export class App extends Component {
 	}
 	
 	fetchOneCookie = async  () => {
-		const cookie = await getOneCookie();
-		this.setState({ cookies: [...cookie, ...this.state.cookies]})
+		try {
+			var cookie = await getOneCookie();
+			this.setState({ cookies: [...cookie, ...this.state.cookies]})
+		} catch (error) {
+			this.setState({error: 'there was an error getting your cookie'})
+		} 
+		this.startCookie();
+	}
+
+	startCookie = () => {
 		this.setState({isClicked: false})
 		this.setState({isOpen: false})
-		this.setState({isCookieHidden: false})
 		this.setState({currentIndex: 0})
+		this.setState({isCookieHidden: false})
+	}
+
+	resetError = () => {
+		this.setState({error: ''});
 	}
 
 	incrementIndex = () => {
@@ -72,6 +84,8 @@ export class App extends Component {
 								isClicked={this.state.isClicked}
 								isOpen={this.state.isOpen}
 								currentIndex={this.state.currentIndex}
+								error={this.state.error}
+								resetError={this.resetError}
 							/>
 						</section>
 						<section className="navContainer">
@@ -83,9 +97,7 @@ export class App extends Component {
 							</button>
 							<section className="front-arrow" onClick={this.decrementIndex} data-testid="front-arrow"></section>
 						</section>
-						{/* <button><section className="front-arrow"></section></button> */}
 					</section>
-					{/* <NavBar /> */}
 				</section>
 			</div>
 		);
