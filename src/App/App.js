@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 import './App.css';
-import { getOneCookie } from '../ApiCalls';
-import { CookiePaper } from '../CookiePaper/CookiePaper';
+import { getOneCookie, getVoiceData } from '../ApiCalls';
+import CookiePaper from '../CookiePaper/CookiePaper';
 import { Cookie } from '../Cookie/Cookie';
 
 
@@ -13,19 +13,31 @@ export class App extends Component {
 			isClicked: false,
 			isOpen: false,
 			isCookieHidden: true,
-			currentIndex: 0
+			currentIndex: 0,
 		}
 	}
+
+	handleTextToSpeech = async (textToSpeech) => {
+		const blob = await getVoiceData(textToSpeech);
+		const url = URL.createObjectURL(blob);
+		return url;
+	}
+
 	
-	fetchOneCookie = async  () => {
+	fetchOneCookie = async () => {
 		try {
 			var cookie = await getOneCookie();
+			console.log(cookie[0]);
+			cookie[0].audioUrl = await this.handleTextToSpeech(cookie[0].lesson.chinese);
+			console.log(cookie);
+
 			this.setState({ cookies: [...cookie, ...this.state.cookies]})
 		} catch (error) {
 			this.setState({error: 'there was an error getting your cookie'})
 		} 
 		this.startCookie();
 	}
+
 
 	startCookie = () => {
 		this.setState({isClicked: false})
@@ -59,6 +71,8 @@ export class App extends Component {
 		this.setState({isCookieHidden: !this.state.isCookieHidden});
 	}
 
+
+
 	render() {
 		return (
 			<div className="App">
@@ -83,6 +97,7 @@ export class App extends Component {
 								currentIndex={this.state.currentIndex}
 								error={this.state.error}
 								resetError={this.resetError}
+								handleTextToSpeech={this.handleTextToSpeech}
 							/>
 						</section>
 						<section className="navContainer">

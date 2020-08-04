@@ -23,6 +23,12 @@
 	}
 }
 
+.audio-pronunciation {
+	display: flex;
+	width: 10pc;
+	height: 10px;
+}
+
 @media screen and (max-width: 370px) {
 	.cookie-paper {
 		max-width: 100vw;
