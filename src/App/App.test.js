@@ -3,16 +3,24 @@ import App from './App';
 import '@testing-library/jest-dom';
 import { render, fireEvent, waitFor, getByText } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { getOneCookie } from '../ApiCalls'
+import { getFullCookie, getVoiceData } from '../ApiCalls'
 jest.mock("../ApiCalls");
+import { response } from '../Assets/response.wav'
 
 describe('App', () => {
-  let mockGetOneCookie;
+  let mockGetFullCookie;
   let mockGetAnotherCookie;
   let mockFailedRequest;
+  let mockAudioRequest;
+  let blobResponse;
   beforeEach(() => {
-    mockGetOneCookie = [
+    
+    
+    // blobResponse = response
+    // getVoiceData.mockResolvedValue(blobResponse);
+    mockGetFullCookie = [
       {
+        audioUrl: "blob:http://localhost:3000/8442aea0-0890-4a3c-9d16-32ee5f5e8bcf",
         fortune: {message: "Man is the head but woman turns it.", id: "5403c81dc2fea4020029ab59"},
         lesson: {english: "batteries", chinese: "电池", pronunciation: "diànchí"},
         lotto: {id: "001400490033005100010057", numbers: [14, 49, 33, 51, 1, 57]}
@@ -21,6 +29,7 @@ describe('App', () => {
     
     mockGetAnotherCookie = [ 
       {
+        audioUrl: "blob:http://localhost:3000/8442aea0-0890-4a3c-9d16-32ee5f5e8bcf", 
         fortune: {message: "You can/t put an old head on young shoulders", id: "5403c81dc2fea4020029ab59"},
         lesson: {english: '1,000,000,000,000', chinese: "一兆", pronunciation: "yī-zhào"},
         lotto: {id: "001400490033005100010057", numbers: [24,44,20,39,32,58]}
@@ -59,8 +68,8 @@ describe('App', () => {
     expect(cookieMessage).toBeInTheDocument();
   });
 
-  it('should call getOneCookie on click of button', async () => {
-    getOneCookie.mockResolvedValue(mockGetOneCookie);
+  it('should call getFullCookie on click of button', async () => {
+    getFullCookie.mockResolvedValue(mockGetFullCookie);
     const {  getByRole } = render(
       <MemoryRouter>
         <App />
@@ -71,13 +80,13 @@ describe('App', () => {
     
     expect(button).toBeInTheDocument();
 
-    expect(getOneCookie).toHaveBeenCalledTimes(0);
+    expect(getFullCookie).toHaveBeenCalledTimes(0);
     fireEvent.click(button);
-    expect(getOneCookie).toHaveBeenCalledTimes(1);
+    expect(getFullCookie).toHaveBeenCalledTimes(1);
   });
 
   it('should fetch cookie data on click of button then display cookie image', async () => {
-    getOneCookie.mockResolvedValue(mockGetOneCookie);
+    getFullCookie.mockResolvedValue(mockGetFullCookie);
     const {  getByRole, getByAltText, getByTestId } = render(
       <MemoryRouter>
         <App />
@@ -88,6 +97,7 @@ describe('App', () => {
     expect(button).toBeInTheDocument();
 
     fireEvent.click(button);
+
     await waitFor(() => {
       const cookieButton = getByTestId('WholeCookie');
       expect(cookieButton).toBeInTheDocument();
@@ -99,7 +109,7 @@ describe('App', () => {
   })
 
   it('should display fortune on click of cookie image', async () => {
-    getOneCookie.mockResolvedValue(mockGetOneCookie);
+    getFullCookie.mockResolvedValue(mockGetFullCookie);
     const {  getByRole, getByAltText, getByTestId, getAllByRole, getByText } = render(
       <MemoryRouter>
         <App />
@@ -114,7 +124,8 @@ describe('App', () => {
     const cookieButton = getByTestId('WholeCookie');
     fireEvent.click(cookieButton);
 
-    const cookiePaper = getAllByRole('button')[1];
+    const cookiePaper = getByTestId('cookie-paper');
+    console.log(cookiePaper)
     expect(cookiePaper).toBeInTheDocument();
 
     const fortuneText = getByText("Man is the head but woman turns it.")
@@ -127,7 +138,7 @@ describe('App', () => {
     expect(lottoText).toBeInTheDocument();
   })
   it('should display chinese lesson on click of cookie paper', async () => {
-    getOneCookie.mockResolvedValue(mockGetOneCookie);
+    getFullCookie.mockResolvedValue(mockGetFullCookie);
     const {  getByRole, getByAltText, getByTestId, getAllByRole, getByText } = render(
       <MemoryRouter>
         <App />
@@ -142,12 +153,12 @@ describe('App', () => {
     const cookieButton = getByTestId('WholeCookie');
     fireEvent.click(cookieButton);
 
-    const cookiePaper = getAllByRole('button')[1];
+    const cookiePaper = getByTestId('cookie-paper');
     expect(cookiePaper).toBeInTheDocument();
 
     fireEvent.click(cookiePaper);
 
-    waitFor(() => {
+    await waitFor(() => {
       const lessonText = getByText("Learn Chinese:");
       const englishText = getByText("batteries");
       const chineseText = getByText("电池");
@@ -159,7 +170,7 @@ describe('App', () => {
 
   })
   it('should display chinese lesson on click of cookie paper, then click again to reveal fortune', async () => {
-    getOneCookie.mockResolvedValue(mockGetOneCookie);
+    getFullCookie.mockResolvedValue(mockGetFullCookie);
     const {  getByRole, getByAltText, getByTestId, getAllByRole, getByText } = render(
       <MemoryRouter>
         <App />
@@ -174,7 +185,7 @@ describe('App', () => {
     const cookieButton = getByTestId('WholeCookie');
     fireEvent.click(cookieButton);
 
-    const cookiePaper = getAllByRole('button')[1];
+    const cookiePaper = getByTestId('cookie-paper');
     expect(cookiePaper).toBeInTheDocument();
 
     fireEvent.click(cookiePaper);
@@ -196,7 +207,7 @@ describe('App', () => {
     expect(lottoText).toBeInTheDocument();
   })
   it('should fetch second cookie after clicking button', async () => {
-    getOneCookie.mockResolvedValueOnce(mockGetOneCookie);
+    getFullCookie.mockResolvedValueOnce(mockGetFullCookie);
     const {  getByRole,  getByTestId, getAllByRole, getByText } = render(
       <MemoryRouter>
         <App />
@@ -211,10 +222,10 @@ describe('App', () => {
     const cookieButton = getByTestId('WholeCookie');
     fireEvent.click(cookieButton);
 
-    const cookiePaper = getAllByRole('button')[1];
+    const cookiePaper = getByTestId('cookie-paper');
     expect(cookiePaper).toBeInTheDocument();
 
-    getOneCookie.mockResolvedValueOnce(mockGetAnotherCookie);
+    getFullCookie.mockResolvedValueOnce(mockGetAnotherCookie);
 
     fireEvent.click(cookiePaper);
 
@@ -244,10 +255,10 @@ describe('App', () => {
     const cookieButton = getByTestId('WholeCookie');
     fireEvent.click(cookieButton);
 
-    const cookiePaper = getAllByRole('button')[1];
+    const cookiePaper = getByTestId('cookie-paper');
     expect(cookiePaper).toBeInTheDocument();
 
-    getOneCookie.mockResolvedValueOnce(mockGetAnotherCookie);
+    getFullCookie.mockResolvedValueOnce(mockGetAnotherCookie);
 
     fireEvent.click(cookiePaper);
 
@@ -288,9 +299,9 @@ describe('App', () => {
     const cookieButton = getByTestId('WholeCookie');
     fireEvent.click(cookieButton);
 
-    const cookiePaper = getAllByRole('button')[1];
+    const cookiePaper = getByTestId('cookie-paper');
   
-    getOneCookie.mockResolvedValueOnce(mockGetAnotherCookie);
+    getFullCookie.mockResolvedValueOnce(mockGetAnotherCookie);
 
     fireEvent.click(cookiePaper);
 
@@ -319,7 +330,7 @@ describe('App', () => {
     })
   })
   it('should render error on cookie paper if api request.status != 200', async () => {
-    getOneCookie.mockResolvedValueOnce(mockFailedRequest);
+    getFullCookie.mockResolvedValueOnce(mockFailedRequest);
     const {  getByRole,  getByTestId, getAllByRole, getByAltText, getByText } = render(
       <MemoryRouter>
         <App />
@@ -329,7 +340,7 @@ describe('App', () => {
     const button =  getByRole('button');
     await fireEvent.click(button);
 
-    await waitFor(() => {
+    waitFor(() => {
       const cookieButton = getByTestId('WholeCookie');
       fireEvent.click(cookieButton);
       const errorMessage = getByText("Sorry!", {exact: false});
@@ -337,7 +348,7 @@ describe('App', () => {
     })
   })
   it('should reset to home page after click of error', async () => {
-    getOneCookie.mockResolvedValueOnce(mockFailedRequest);
+    getFullCookie.mockResolvedValueOnce(mockFailedRequest);
     const {  getByRole,  getByTestId, getAllByRole, getByAltText, getByText } = render(
       <MemoryRouter>
         <App />
@@ -347,7 +358,7 @@ describe('App', () => {
     const button =  getByRole('button');
     fireEvent.click(button);
 
-    await waitFor(() => {
+    waitFor(() => {
       const cookieButton = getByTestId('WholeCookie');
       fireEvent.click(cookieButton);
       const errorMessage = getByText("Sorry!", {exact: false});

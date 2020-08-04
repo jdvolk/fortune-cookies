@@ -26,6 +26,7 @@ export default class CookiePaper extends Component {
 				<>
 					<button 
 						className={this.props.isOpen ? "cookie-paper" : "hidden"}
+						data-testid="cookie-paper"
 						onClick={this.props.resetError}
 					>
 						<section className="Cookie">
@@ -46,6 +47,7 @@ export default class CookiePaper extends Component {
 			return ( 
 				<button 
 					className={this.props.isOpen ? "cookie-paper" : "hidden"}
+					data-testid="cookie-paper"
 					onClick={this.props.handlePaperClick}
 				>
 					<section className="Cookie">
@@ -68,6 +70,7 @@ export default class CookiePaper extends Component {
 				<>
 					<button
 						className="cookie-paper"
+						data-testid="cookie-paper"
 						onClick={this.props.handlePaperClick}
 					>
 						<section>
@@ -80,14 +83,12 @@ export default class CookiePaper extends Component {
 								</section> 
 							</section>
 							<section 
-							onClick={this.togglePlay}
-							className="audio-pronunciation"
+								onClick={this.togglePlay}
+								className="audio-pronunciation"
 							> {this.state.play ? 'Play': 'Play'}
-							<audio src={fortuneCookie.audioUrl}></audio>
+								<audio src={fortuneCookie.audioUrl}></audio>
 						</section>
 					</button>
-					
-		
 				</>
 			)
 		}

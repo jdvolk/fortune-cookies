@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; 
 import './App.css';
-import { getOneCookie, getVoiceData } from '../ApiCalls';
+import { getOneCookie, getVoiceData, getFullCookie } from '../ApiCalls';
 import CookiePaper from '../CookiePaper/CookiePaper';
 import { Cookie } from '../Cookie/Cookie';
 
@@ -16,28 +16,17 @@ export class App extends Component {
 			currentIndex: 0,
 		}
 	}
-
-	handleTextToSpeech = async (textToSpeech) => {
-		const blob = await getVoiceData(textToSpeech);
-		const url = URL.createObjectURL(blob);
-		return url;
-	}
-
 	
 	fetchOneCookie = async () => {
 		try {
-			var cookie = await getOneCookie();
-			console.log(cookie[0]);
-			cookie[0].audioUrl = await this.handleTextToSpeech(cookie[0].lesson.chinese);
-			console.log(cookie);
-
+			var cookie = await getFullCookie();
 			this.setState({ cookies: [...cookie, ...this.state.cookies]})
-		} catch (error) {
+		} 
+		catch (error) {
 			this.setState({error: 'there was an error getting your cookie'})
 		} 
 		this.startCookie();
 	}
-
 
 	startCookie = () => {
 		this.setState({isClicked: false})
@@ -70,8 +59,6 @@ export class App extends Component {
 	handleCookieUnmount = () => {
 		this.setState({isCookieHidden: !this.state.isCookieHidden});
 	}
-
-
 
 	render() {
 		return (
