@@ -9,10 +9,8 @@ export const getOneCookie = async () => {
 export const getVoiceData = async (textToSpeech) => {
 	try {
 		const response = await fetch(`https://api.voicerss.org/?key=b2e2b3e1483a4d2494f2b1440b85875c&hl=zh-cn&src=${textToSpeech}`);
-		// console.log(response)
 		const blob = await response.blob();
 		return blob;
-
 	} catch (error) {
 		return error;
 	}
@@ -38,6 +36,3 @@ export const getFullCookie = async () => {
 		return error;
 	}
 }
-
-
-

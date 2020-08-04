@@ -9,14 +9,11 @@ export default class CookiePaper extends Component {
 		}
 	}
 
-	// audio = this.props.cookies[this.props.currentIndex];
-
 	togglePlay = () => {
 		const audio = new Audio(this.props.cookies[this.props.currentIndex].audioUrl)
 		this.setState({play: !this.state.play}, () => {
-			 audio.play() ;
+			 audio.play()
 		})
-		
 	}
 
 	render = () => {
@@ -64,8 +61,6 @@ export default class CookiePaper extends Component {
 			)
 		} else {
 			const fortuneCookie = this.props.cookies[this.props.currentIndex];
-			// console.log(fortuneCookie.lesson.chinese);
-			// const audioUrl = await this.props.handleTextToSpeech(fortuneCookie.lesson.chinese);
 			return (
 				<>
 					<button

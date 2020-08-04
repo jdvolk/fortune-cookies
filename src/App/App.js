@@ -4,7 +4,6 @@ import { getOneCookie, getVoiceData, getFullCookie } from '../ApiCalls';
 import CookiePaper from '../CookiePaper/CookiePaper';
 import { Cookie } from '../Cookie/Cookie';
 
-
 export class App extends Component {
 	constructor() {
 		super();
