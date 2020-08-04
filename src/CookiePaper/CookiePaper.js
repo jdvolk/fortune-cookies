@@ -9,13 +9,12 @@ export default class CookiePaper extends Component {
 		}
 	}
 
-	togglePlay = () => {
+	togglePlay = async () => {
 		const audio = new Audio(this.props.cookies[this.props.currentIndex].audioUrl)
-		this.setState({play: !this.state.play}, () => {
-			 audio.play()
-		})
+		this.setState({play: !this.state.play})
+		await audio.play();
 	}
-
+	
 	render = () => {
 		if(this.props.error) {
 			const fortuneCookie = {fortune: {message: this.props.error}, lotto: {numbers: "There was an error retrieving your cookie"}}
@@ -39,7 +38,7 @@ export default class CookiePaper extends Component {
 			return (
 				<p>Press button for cookie</p>
 			)
-		} else if (!this.props.isClicked && !this.state.play) {
+		} else if (!this.props.isClicked) {
 			const fortuneCookie = this.props.cookies[this.props.currentIndex]
 			return ( 
 				<button 
